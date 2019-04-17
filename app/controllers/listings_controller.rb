@@ -6,13 +6,17 @@ class ListingsController < ApplicationController
   end
 
   def create; end
+
   def new
     @listing = Listing.new
+    @breeds = Breed.all
+    @sexes = Listing.sexes.keys
   end
 
   def show; end
 
   def edit; end
+
   def update; end
 
   def destroy; end
