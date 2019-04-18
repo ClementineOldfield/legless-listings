@@ -6,7 +6,8 @@ class ListingsController < ApplicationController
   end
 
   def create
-
+    @listing = Listing.create(listing_params)
+    byebug
   end
 
   def new
@@ -24,6 +25,10 @@ class ListingsController < ApplicationController
   def destroy; end
 
   private
+
+  def listing_params
+    new_params = params.require(:listing).permit(:title, :description, :breed_id, :sex, :price, :deposit, :date_of_birth, :diet)
+  end
 
   def set_listing
     @id = params[:id]
