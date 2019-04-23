@@ -1,4 +1,5 @@
 class ListingsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
   before_action :set_breeds_and_sexes, only: [:new, :edit]
   
@@ -37,7 +38,7 @@ class ListingsController < ApplicationController
   end
 
   def listing_params
-    new_params = params.require(:listing).permit(:title, :description, :breed_id, :sex, :price, :deposit, :date_of_birth, :diet)
+    new_params = params.require(:listing).permit(:title, :description, :breed_id, :sex, :price, :deposit, :date_of_birth, :diet, :picture)
   end
 
   def set_listing
